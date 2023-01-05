@@ -9,8 +9,12 @@ fn main() {
 
     let sum = plus_two(99, 98);
     println!("the value of sum is : {}",sum);
-    
+
     control();
+
+    fn_while();
+
+    fun_for();
 }
 
 fn anther_fn(x: u32,y: i32) {
@@ -31,5 +35,21 @@ fn control() {
         println!("number is divisible by 2");
     } else {
         println!("number is not divisible by 2,3,4");
+    }
+}
+
+fn fn_while() {
+    let a = [1,2,3,4,5,6,7,8,9,10];
+    let mut index = 0;
+    while index < 8 {
+        println!("the values is : {}",a[index]);
+        index += 1;
+    }
+}
+
+fn fun_for() {
+    let a = [1,2,3,4,5,6,7,8,9,10];
+    for ele in a {
+        println!("ths value is : {}",ele);
     }
 }
