@@ -30,6 +30,10 @@ fn main() {
     let s7 = String::from("Hello Go");
     let len2 = calculate_length_ref(&s7);
     println!("the length of {} is {}",s7,len2);
+
+    let mut s8 = String::from("Hello");
+    change_ref(&mut s8);
+    println!("the value of s8 is {}",s8);
 }
 
 fn takes_ownership(some_sting: String) {
@@ -57,4 +61,8 @@ fn calculate_length(s: String)-> (String,usize) {
 fn calculate_length_ref(s: &String)-> usize {
     let length = s.len();
     length
+}
+
+fn change_ref(some_string: &mut String) {
+    some_string.push_str(" World !!!");
 }
