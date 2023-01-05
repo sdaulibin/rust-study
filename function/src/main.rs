@@ -15,6 +15,8 @@ fn main() {
     fn_while();
 
     fun_for();
+
+    fn_loop();
 }
 
 fn anther_fn(x: u32,y: i32) {
@@ -36,6 +38,17 @@ fn control() {
     } else {
         println!("number is not divisible by 2,3,4");
     }
+}
+
+fn fn_loop() {
+    let mut counter = 0;
+    let result = loop {
+        counter += 1;
+        if counter == 10 {
+            break counter;
+        }
+    };
+    println!("the values of result is : {}",result);
 }
 
 fn fn_while() {
