@@ -34,6 +34,27 @@ fn main() {
     let mut s8 = String::from("Hello");
     change_ref(&mut s8);
     println!("the value of s8 is {}",s8);
+
+    // **限制1:在一个特定的作用域中，对某个特定的数据，只能有一个可变引用**
+    let mut s9 = String::from("Hello!!");
+    let r1: &String = &mut s9;
+    //A mutable variable, reference, or pointer.
+    //mut can be used in several situations. The first is mutable variables, which can be used anywhere you can bind a value to a variable name. Some examples:
+    //let r2: &String = &mut s9;
+    println!("ths value of r1 is : {}",r1);
+
+    // **限制2:在一个特定作用域中，对于某个特定的不可变引用，不能再添加可变引用**
+    let mut s10 = String::from("Hi i am rust");
+    let r3: &String = &s10;
+    let r4: &String = &s10;
+    // cannot borrow `s10` as mutable because it is also borrowed as immutable
+    //let r5: &mut String = &mut s10;
+    println!("ths value of r3,r4 is : {},{}",r3,r4);
+    let r5: &mut String = &mut s10;
+    println!("ths value of r5 is : {}",r5);
+
+    //在任意给定时间，要么 只能有一个可变引用，要么 只能有多个不可变引用。
+    //引用必须总是有效的。
 }
 
 fn takes_ownership(some_sting: String) {
