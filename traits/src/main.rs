@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 pub trait Summary {
     fn summarize_author(&self) -> String;
 
@@ -34,6 +36,28 @@ impl Summary for Tweet  {
 
     fn summarize(&self) -> String {
         format!("{},{}",self.username,self.content)
+    }
+}
+//使用 trait bound 有条件地实现方法
+struct Pair<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Pair<T>{
+    fn new(x:T,y:T) -> Self{
+        Self {x, y}
+    }
+}
+
+impl<T:Display + PartialOrd> Pair<T> {
+    //该方法只适用于实现Display和PartialOrd特征的类型
+    fn camp_display(&self) {
+        if self.x >= self.y {
+            println!("the largest number is x = {}",self.x)
+        } else {
+            println!("the largest number is y = {}",self.y)
+        }
     }
 }
 
