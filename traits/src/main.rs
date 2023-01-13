@@ -67,7 +67,7 @@ impl<T:Display + PartialOrd> Pair<T> {
 }*/
 
 //Trait Bound 泛型 特征限制
-pub fn notify<T: Summary>(item: &T) {
+pub fn notify<T: Summary>(item: &T) gi
     println!("Breaking news! {}",item.summarize())
 }
 
