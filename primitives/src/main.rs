@@ -2,7 +2,7 @@ use std::fmt;
 //元组可以充当函数的参数和返回值
 fn reverse(pair: (i32,bool)) -> (bool,i32) {
     //可以使用`let`把元组的成员绑定到一些变量
-    let(integer,boolean) = pair;
+    let (integer,boolean) = pair;
     (boolean,integer)
 }
 #[derive(Debug)]
@@ -12,6 +12,11 @@ impl fmt::Display for Matrix {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f,"( {},{} )\n( {},{} )",self.0,self.1,self.2,self.3)
     }
+}
+
+fn transpose(matrix: Matrix) -> Matrix{
+    let result = Matrix(matrix.0,matrix.3,matrix.2,matrix.1);
+    result
 }
 fn main() {
     // 整数相加
@@ -55,17 +60,20 @@ fn main() {
     let pair = (1,true);
     println!("the revesed pair is {:?}",reverse(pair));
 
-     // 创建单元素元组需要一个额外的逗号，这是为了和被括号包含的字面量作区分。
-     println!("one element tuple: {:?}", (5u32,));
-     println!("just an integer: {:?}", (5u32));
+    // 创建单元素元组需要一个额外的逗号，这是为了和被括号包含的字面量作区分。
+    println!("one element tuple: {:?}", (5u32,));
+    println!("just an integer: {:?}", (5u32));
  
-     // 元组可以被解构（deconstruct），从而将值绑定给变量
-     let tuple = (1, "hello", 4.5, true);
+    // 元组可以被解构（deconstruct），从而将值绑定给变量
+    let tuple = (1, "hello", 4.5, true);
  
-     let (a, b, c, d) = tuple;
-     println!("{:?}, {:?}, {:?}, {:?}", a, b, c, d);
+    let (a, b, c, d) = tuple;
+    println!("{:?}, {:?}, {:?}, {:?}", a, b, c, d);
  
-     let matrix = Matrix(1.1, 1.2, 2.1, 2.2);
-     println!("{:?}", matrix);
-     println!("{}",matrix);
+    let matrix = Matrix(1.1, 1.2, 2.1, 2.2);
+    println!("{:?}", matrix);
+    println!("{}",matrix);
+     
+    println!("Matrix:\n{}", matrix);
+    println!("Transpose:\n{}", transpose(matrix));
 }
