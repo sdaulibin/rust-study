@@ -34,6 +34,11 @@ impl List {
         }
     }
 }
+enum Action {
+    Say(String),
+    MoveTo(i32,i32),
+    ChangeColorRGB(u16,u16,u16),
+}
 fn main() {
     let mut list = List::new();
     list = list.prepend(1);
@@ -68,8 +73,23 @@ fn main() {
         }
    }
 
-   let a = Complex{re: 2.1 , im: -1.2};
-   let b = Complex::new(11.1, 22.2);
-   let result = a + b;
-   println!("{},{}i",result.re,result.im);
+    let a = Complex{re: 2.1 , im: -1.2};
+    let b = Complex::new(11.1, 22.2);
+    let result = a + b;
+    println!("{},{}i",result.re,result.im);
+
+    let actions = [Action::Say("Hello Rust".to_string()),Action::MoveTo(3,4),Action::ChangeColorRGB(255, 255, 0)];
+    for action in actions {
+        match action {
+            Action::Say(s) => {
+                println!("{}",s);
+            },
+            Action::MoveTo(x, y) => {
+                println!("move from (0,0) to ({},{})",x,y);
+            },
+            Action::ChangeColorRGB(r, g, _) => {
+                println!("change color into '(r:{}, g:{}, b:0)', 'b' has been ignored",r, g,);
+            }
+       }
+   }
 }
